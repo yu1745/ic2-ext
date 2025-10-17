@@ -11,7 +11,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 public class BlockChargeableDirt extends Block {
@@ -38,17 +37,7 @@ public class BlockChargeableDirt extends Block {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            TileEntity te = world.getTileEntity(pos);
-            if (te instanceof TileEntityChargeableDirt) {
-                TileEntityChargeableDirt chargeableDirt = (TileEntityChargeableDirt) te;
-                double energy = chargeableDirt.getEnergy();
-                double maxEnergy = chargeableDirt.getMaxEnergy();
-
-                player.sendMessage(new TextComponentString("可充电泥土能量: " +
-                    String.format("%.1f", energy) + " / " + String.format("%.1f", maxEnergy) + " EU"));
-            } else {
-                player.sendMessage(new TextComponentString("这是一个可充电泥土方块"));
-            }
+            player.openGui(com.example.SampleMod112.instance, com.example.gui.GuiHandler.CHARGEABLE_DIRT_GUI, world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
     }
