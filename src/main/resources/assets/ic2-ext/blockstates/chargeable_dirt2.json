@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "ic2-ext:chargeable_dirt2" }
+    }
+}

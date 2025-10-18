@@ -1,10 +1,12 @@
 package com.example;
 
 import com.example.block.BlockChargeableDirt;
+import com.example.block.BlockChargeableDirt2;
 import com.example.gui.GuiHandler;
 import com.example.item.ItemDummyLaser;
 import com.example.proxy.CommonProxy;
 import com.example.tileentity.TileEntityChargeableDirt;
+import com.example.tileentity.TileEntityChargeableDirt2;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -40,6 +42,7 @@ public class SampleMod112 {
 
     public static final Item DUMMY_LASER = new ItemDummyLaser();
     public static final Block CHARGEABLE_DIRT = new BlockChargeableDirt();
+    public static final Block CHARGEABLE_DIRT2 = new BlockChargeableDirt2();
 
     @SidedProxy(clientSide = "com.example.proxy.ClientProxy", serverSide = "com.example.proxy.CommonProxy")
     public static CommonProxy proxy;
@@ -62,6 +65,7 @@ public class SampleMod112 {
 
         // 注册TileEntity
         GameRegistry.registerTileEntity(TileEntityChargeableDirt.class, "chargeable_dirt");
+        GameRegistry.registerTileEntity(TileEntityChargeableDirt2.class, "chargeable_dirt2");
     }
 
     @Mod.EventHandler
@@ -77,6 +81,8 @@ public class SampleMod112 {
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         CHARGEABLE_DIRT.setCreativeTab(creativeTab);
         event.getRegistry().register(CHARGEABLE_DIRT);
+        CHARGEABLE_DIRT2.setCreativeTab(creativeTab);
+        event.getRegistry().register(CHARGEABLE_DIRT2);
     }
 
     @SubscribeEvent
@@ -84,12 +90,16 @@ public class SampleMod112 {
         DUMMY_LASER.setCreativeTab(creativeTab);
         event.getRegistry().register(DUMMY_LASER);
         event.getRegistry().register(new ItemBlock(CHARGEABLE_DIRT).setRegistryName(CHARGEABLE_DIRT.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(CHARGEABLE_DIRT2).setRegistryName(CHARGEABLE_DIRT2.getRegistryName()));
+
     }
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
         proxy.registerItemRenderer(DUMMY_LASER, 0, "dummy_laser");
         proxy.registerItemRenderer(Item.getItemFromBlock(CHARGEABLE_DIRT), 0, "chargeable_dirt");
+        proxy.registerItemRenderer(Item.getItemFromBlock(CHARGEABLE_DIRT2), 0, "chargeable_dirt2");
+
     }
 
 }

@@ -21,7 +21,7 @@ public class BlockChargeableDirt extends Block {
         setRegistryName("chargeable_dirt");
         setHardness(0.5F);
         setResistance(0.5F);
-        setCreativeTab(SampleMod112.creativeTab);
+//        setCreativeTab(SampleMod112.creativeTab);
     }
 
     @Override

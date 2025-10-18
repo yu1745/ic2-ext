@@ -1,5 +1,3 @@
-import jdk.nashorn.internal.objects.NativeRegExp.source
-
 //buildscript {
 //    repositories {
 //        mavenCentral()
@@ -13,9 +11,11 @@ import jdk.nashorn.internal.objects.NativeRegExp.source
 //}
 
 
+val kotlinVersion = "2.2.20"
 
 plugins {
     java
+    kotlin("jvm") version "2.2.20"
     id("net.minecraftforge.gradle") version "6.+"
 //    id("net.minecraftforge.gradle")
 }
@@ -25,6 +25,11 @@ java {
         languageVersion.set(JavaLanguageVersion.of(8))
     }
 }
+
+kotlin {
+    jvmToolchain(8)
+}
+
 
 //tasks.compileJava {
 //    sourceCompatibility = "8"
@@ -40,6 +45,7 @@ dependencies {
     minecraft("net.minecraftforge:forge:1.12.2-14.23.5.2860")
     implementation(files("libs/industrialcraft-2-2.8.222-ex112-api.jar"))
     compileOnly(files("libs/industrialcraft-2-2.8.222-ex112-dev.jar"))
+    implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
 }
 
 minecraft {
@@ -49,20 +55,18 @@ minecraft {
         create("client") {
             workingDirectory(file("./run"))
             mods {
-//                sources(sourceSets.main)
-//                create(project.name) {
-//                    source(sourceSets.main)
-//                }
+                create(project.name) {
+                    source(sourceSets.main.get())
+                }
             }
         }
 
         create("server") {
             workingDirectory(file("./run/server"))
             mods {
-//                sources(sourceSets.main)
-//                create(project.name) {
-//                    source(sourceSets.main)
-//                }
+                create(project.name) {
+                    source(sourceSets.main.get())
+                }
             }
         }
     }
@@ -80,4 +84,12 @@ tasks.processResources {
 // Default Gradle behavior puts resources in ./build/resources/main instead of ./build/classes/main/java. Let's change that.
 sourceSets.all {
 //    it.output.resourcesDir = it.output.classesDirs.files.iterator().next()
+//    output.resourcesDir =
+    output.setResourcesDir(output.classesDirs.files.iterator().next())
 }
+
+//tasks.named("runClient").get().dependsOn(tasks.jar)
+
+//tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+//    destinationDirectory.set(file("${layout.buildDirectory}/classes/java/main"))
+//}
