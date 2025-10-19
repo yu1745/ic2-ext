@@ -1,5 +1,6 @@
 package wangyu;
 
+import net.minecraft.init.Items;
 import org.jetbrains.annotations.NotNull;
 import wangyu.block.BlockChargeableDirt;
 import wangyu.block.BlockChargeableDirt2;
@@ -42,14 +43,23 @@ public class SampleMod112 {
 //    public static final Block CHARGEABLE_DIRT = new BlockChargeableDirt();
 //    public static final Block CHARGEABLE_DIRT2 = new BlockChargeableDirt2();
 
+//    private static boolean inited = false;
+
     @SidedProxy(clientSide = "wangyu.proxy.ClientProxy", serverSide = "wangyu.proxy.CommonProxy")
     public static CommonProxy proxy;
 
-    public static CreativeTabs creativeTab = new CreativeTabs("ic2_ext") {
+    public static CreativeTabs creativeTab = new CreativeTabs(MODID + "-tab") {
         @NotNull
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(DUMMY_LASER);
+            LOGGER.info("createIcon()");
+            return new ItemStack(ModRegistry.Companion.getRegisteredItems().stream().filter(e -> e.getClass() == ItemDummyLaser.class).findAny().orElse(Items.AIR));
+//            if (instance == null) {
+//                return new ItemStack(Items.BOW);
+//            } else {
+//                return new ItemStack(DUMMY_LASER);
+//            }
+
         }
     };
 

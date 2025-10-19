@@ -6,6 +6,7 @@ import net.minecraft.item.ItemBlock
 import net.minecraft.tileentity.TileEntity
 import net.minecraftforge.client.event.ModelRegistryEvent
 import net.minecraftforge.event.RegistryEvent
+import net.minecraftforge.fml.common.FMLCommonHandler
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.registry.GameRegistry
@@ -18,9 +19,9 @@ import java.util.jar.JarFile
 @EventBusSubscriber(modid = SampleMod112.MODID)
 class ModRegistry {
     companion object {
-        private val registeredBlocks = mutableListOf<Block>()
-        private val registeredItems = mutableListOf<Item>()
-        private val registeredTileEntities = mutableListOf<Class<TileEntity>>()
+        val registeredBlocks = mutableListOf<Block>()
+        val registeredItems = mutableListOf<Item>()
+        val registeredTileEntities = mutableListOf<Class<TileEntity>>()
 
         init {
             scanAndRegisterClasses()
@@ -224,22 +225,26 @@ class ModRegistry {
         @JvmStatic
         fun registerItemRenderers() {
             LOGGER.info("registerItemRenderers()")
-            registeredItems.forEach { item ->
-                val assetsName = getAssetsName(item)
-                if (assetsName != null) {
-                    SampleMod112.proxy.registerItemRenderer(item, 0, assetsName)
-                    LOGGER.info("Registered item renderer for ${item::class.simpleName} with assets: $assetsName")
+            val isClient = FMLCommonHandler.instance().side == Side.CLIENT
+            LOGGER.info("isClient:$isClient")
+            LOGGER.info("SampleMod112.proxy::class:${SampleMod112.proxy::class}")
+            if (isClient)
+                registeredItems.forEach { item ->
+                    val assetsName = getAssetsName(item)
+                    if (assetsName != null) {
+                        SampleMod112.proxy.registerItemRenderer(item, 0, assetsName)
+                        LOGGER.info("Registered item renderer for ${item::class.simpleName} with assets: $assetsName")
+                    }
                 }
-            }
-
-            registeredBlocks.forEach { block ->
-                val itemBlock = Item.getItemFromBlock(block)
-                val assetsName = getAssetsName(block)
-                if (assetsName != null) {
-                    SampleMod112.proxy.registerItemRenderer(itemBlock, 0, assetsName)
-                    LOGGER.info("Registered item renderer for block ${block::class.simpleName} with assets: $assetsName")
+            if (isClient)
+                registeredBlocks.forEach { block ->
+                    val itemBlock = Item.getItemFromBlock(block)
+                    val assetsName = getAssetsName(block)
+                    if (assetsName != null) {
+                        SampleMod112.proxy.registerItemRenderer(itemBlock, 0, assetsName)
+                        LOGGER.info("Registered item renderer for block ${block::class.simpleName} with assets: $assetsName")
+                    }
                 }
-            }
         }
     }
 }
