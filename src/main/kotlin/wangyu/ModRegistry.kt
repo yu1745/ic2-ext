@@ -19,9 +19,9 @@ import java.util.jar.JarFile
 @EventBusSubscriber(modid = SampleMod112.MODID)
 class ModRegistry {
     companion object {
-        val registeredBlocks = mutableListOf<Block>()
-        val registeredItems = mutableListOf<Item>()
-        val registeredTileEntities = mutableListOf<Class<TileEntity>>()
+        private val registeredBlocks = mutableListOf<Block>()
+        private val registeredItems = mutableListOf<Item>()
+        private val registeredTileEntities = mutableListOf<Class<TileEntity>>()
 
         init {
             scanAndRegisterClasses()
@@ -245,6 +245,23 @@ class ModRegistry {
                         LOGGER.info("Registered item renderer for block ${block::class.simpleName} with assets: $assetsName")
                     }
                 }
+        }
+
+        @JvmStatic
+        fun getItemByClass(clazz: Class<out Item>): Item? {
+            return registeredItems.find { item ->
+                item::class.java == clazz
+            }
+        }
+
+        @JvmStatic
+        fun getRegisteredItems(): List<Item> {
+            return registeredItems.toList()
+        }
+
+        @JvmStatic
+        fun getRegisteredBlocks(): List<Block> {
+            return registeredBlocks.toList()
         }
     }
 }

@@ -22,6 +22,8 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Optional;
+
 @Mod(
         modid = SampleMod112.MODID,
         name = SampleMod112.NAME,
@@ -53,7 +55,8 @@ public class SampleMod112 {
         @Override
         public ItemStack createIcon() {
             LOGGER.info("createIcon()");
-            return new ItemStack(ModRegistry.Companion.getRegisteredItems().stream().filter(e -> e.getClass() == ItemDummyLaser.class).findAny().orElse(Items.AIR));
+            return new ItemStack(Optional.ofNullable(ModRegistry.getItemByClass(ItemDummyLaser.class)).orElse(Items.AIR));
+//            return new ItemStack(ModRegistry.Companion.getRegisteredItems().stream().filter(e -> e.getClass() == ItemDummyLaser.class).findAny().orElse(Items.AIR));
 //            if (instance == null) {
 //                return new ItemStack(Items.BOW);
 //            } else {
