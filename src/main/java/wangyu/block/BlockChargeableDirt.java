@@ -1,7 +1,8 @@
-package com.example.block;
+package wangyu.block;
 
-import com.example.SampleMod112;
-import com.example.tileentity.TileEntityChargeableDirt;
+import wangyu.SampleMod112;
+import wangyu.gui.GuiHandler;
+import wangyu.tileentity.TileEntityChargeableDirt;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -14,6 +15,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockChargeableDirt extends Block {
+
+    public static final String assets_name = "chargeable_dirt";
 
     public BlockChargeableDirt() {
         super(Material.GROUND);
@@ -37,7 +40,7 @@ public class BlockChargeableDirt extends Block {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            player.openGui(com.example.SampleMod112.instance, com.example.gui.GuiHandler.CHARGEABLE_DIRT_GUI, world, pos.getX(), pos.getY(), pos.getZ());
+            player.openGui(SampleMod112.instance, GuiHandler.CHARGEABLE_DIRT_GUI, world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
     }

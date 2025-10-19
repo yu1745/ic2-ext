@@ -1,10 +1,10 @@
-package com.example.inventory
+package wangyu.inventory
 
-import KotlinSyncContainer
-import com.example.tileentity.TileEntityChargeableDirt2
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.Slot
 import net.minecraft.item.ItemStack
+import wangyu.sync.KotlinSyncContainer
+import wangyu.tileentity.TileEntityChargeableDirt2
 
 /**
  * 充电泥土Container v2，使用自动同步系统

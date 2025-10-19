@@ -1,6 +1,5 @@
-package com.example.item;
+package wangyu.item;
 
-import com.example.SampleMod112;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,6 +9,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class ItemDummyLaser extends Item {
+
+    public static final String assets_name = "dummy_laser";
 
     public ItemDummyLaser() {
         setMaxStackSize(1);

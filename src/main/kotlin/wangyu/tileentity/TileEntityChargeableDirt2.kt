@@ -1,6 +1,7 @@
-package com.example.tileentity
+package wangyu.tileentity
 
-import SyncField
+import wangyu.sync.SyncField
+import wangyu.sync.syncable
 import ic2.api.energy.EnergyNet
 import ic2.api.energy.event.EnergyTileLoadEvent
 import ic2.api.energy.event.EnergyTileUnloadEvent
@@ -19,13 +20,16 @@ import net.minecraft.util.text.ITextComponent
 import net.minecraft.util.text.TextComponentString
 import net.minecraftforge.common.MinecraftForge
 import mcp.MethodsReturnNonnullByDefault
-import syncable
 import javax.annotation.ParametersAreNonnullByDefault
 
 /**
  * Kotlin版本的充电泥土TileEntity v2，使用自动同步委托系统
  */
 class TileEntityChargeableDirt2 : TileEntity(), IEnergySink, ITickable, IInventory {
+
+    companion object {
+        const val assets_name = "chargeable_dirt2"
+    }
 
     // 使用自动同步的字段 - 不需要手动传递属性名
     @SyncField(0)

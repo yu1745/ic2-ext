@@ -1,4 +1,4 @@
-package com.example.tileentity;
+package wangyu.tileentity;
 
 import ic2.api.energy.EnergyNet;
 import ic2.api.energy.event.EnergyTileLoadEvent;
@@ -25,6 +25,8 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 public class TileEntityChargeableDirt extends TileEntity implements IEnergySink, ITickable, IInventory {
+
+    public static final String assets_name = "chargeable_dirt";
 
     // 能量存储 (最大10000EU)
     private double energy = 0.0;

@@ -1,4 +1,4 @@
-package com.example.proxy;
+package wangyu.proxy;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;

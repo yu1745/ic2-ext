@@ -1,9 +1,9 @@
-package com.example.gui;
+package wangyu.gui;
 
-import com.example.inventory.ContainerChargeableDirt;
-import com.example.inventory.ContainerChargeableDirt2;
-import com.example.tileentity.TileEntityChargeableDirt;
-import com.example.tileentity.TileEntityChargeableDirt2;
+import wangyu.inventory.ContainerChargeableDirt;
+import wangyu.inventory.ContainerChargeableDirt2;
+import wangyu.tileentity.TileEntityChargeableDirt;
+import wangyu.tileentity.TileEntityChargeableDirt2;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

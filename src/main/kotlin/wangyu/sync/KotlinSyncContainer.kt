@@ -1,4 +1,5 @@
-import com.example.sync.SyncRegistry
+package wangyu.sync
+
 import net.minecraft.inventory.Container
 import net.minecraft.inventory.IContainerListener
 import net.minecraft.inventory.IInventory

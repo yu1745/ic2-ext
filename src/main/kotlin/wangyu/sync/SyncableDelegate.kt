@@ -1,6 +1,5 @@
+package wangyu.sync
 
-import com.example.sync.SyncRegistry
-import kotlin.properties.Delegates
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 import net.minecraft.tileentity.TileEntity

@@ -1,6 +1,6 @@
-package com.example.inventory;
+package wangyu.inventory;
 
-import com.example.tileentity.TileEntityChargeableDirt;
+import wangyu.tileentity.TileEntityChargeableDirt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;

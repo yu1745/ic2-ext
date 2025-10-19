@@ -1,4 +1,4 @@
-package com.example.sync
+package wangyu.sync
 
 import net.minecraft.tileentity.TileEntity
 

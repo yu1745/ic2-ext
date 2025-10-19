@@ -1,7 +1,7 @@
-package com.example.gui;
+package wangyu.gui;
 
-import com.example.inventory.ContainerChargeableDirt;
-import com.example.tileentity.TileEntityChargeableDirt;
+import wangyu.inventory.ContainerChargeableDirt;
+import wangyu.tileentity.TileEntityChargeableDirt;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;

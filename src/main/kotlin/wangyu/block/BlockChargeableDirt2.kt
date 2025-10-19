@@ -1,8 +1,8 @@
-package com.example.block
+package wangyu.block
 
-import com.example.SampleMod112
-import com.example.gui.GuiHandler
-import com.example.tileentity.TileEntityChargeableDirt2
+import wangyu.SampleMod112
+import wangyu.gui.GuiHandler
+import wangyu.tileentity.TileEntityChargeableDirt2
 import net.minecraft.block.Block
 import net.minecraft.block.material.Material
 import net.minecraft.block.state.IBlockState
@@ -19,6 +19,10 @@ import java.util.*
  * 充电泥土方块 v2
  */
 class BlockChargeableDirt2 : Block(Material.GROUND) {
+
+    companion object {
+        const val assets_name = "chargeable_dirt2"
+    }
 
     init {
         translationKey = "chargeable_dirt2"
