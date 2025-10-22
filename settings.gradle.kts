@@ -4,7 +4,7 @@ pluginManagement {
         gradlePluginPortal()
         // Maven Central 仓库
         mavenCentral()
-        // 你的自定义仓库
+        // forge仓库
         maven {
             url = uri("https://maven.minecraftforge.net/")
         }

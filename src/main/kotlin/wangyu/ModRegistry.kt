@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.registry.GameRegistry
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
-import wangyu.SampleMod112.LOGGER
+import wangyu.SampleMod112.Companion.LOGGER
 import java.lang.reflect.Modifier
 import java.util.jar.JarFile
 
@@ -29,7 +29,7 @@ class ModRegistry {
 
         private fun scanAndRegisterClasses() {
             LOGGER.info("scanAndRegisterClasses()")
-            val packageName = "wangyu"
+            val packageName = ModRegistry::class.java.`package`.name
             val classLoader = Thread.currentThread().contextClassLoader
 
             try {

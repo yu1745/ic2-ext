@@ -51,7 +51,6 @@ dependencies {
 minecraft {
     mappings(mapOf("channel" to "stable", "version" to "39-1.12"))
     runs {
-
         create("client") {
             workingDirectory(file("./run"))
             mods {
@@ -83,13 +82,5 @@ tasks.processResources {
 // When Forge 1.12 loads mods from a directory that's been put on the classpath, it expects to find resources in the same directory.
 // Default Gradle behavior puts resources in ./build/resources/main instead of ./build/classes/main/java. Let's change that.
 sourceSets.all {
-//    it.output.resourcesDir = it.output.classesDirs.files.iterator().next()
-//    output.resourcesDir =
     output.setResourcesDir(output.classesDirs.files.iterator().next())
 }
-
-//tasks.named("runClient").get().dependsOn(tasks.jar)
-
-//tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-//    destinationDirectory.set(file("${layout.buildDirectory}/classes/java/main"))
-//}
